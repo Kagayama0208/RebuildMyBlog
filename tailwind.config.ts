@@ -13,6 +13,30 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        "color-change-2x": "color-change-2x 2s linear  infinite alternate both",
+        slideIn: "slideIn 1s ease-in forwards",
+      },
+      keyframes: {
+        "color-change-2x": {
+          "0%": {
+            background: "#19dcea",
+          },
+          to: {
+            background: "#b22cff",
+          },
+        },
+        slideIn: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(60px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+      },
     },
   },
   plugins: [],
