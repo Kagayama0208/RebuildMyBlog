@@ -27,6 +27,26 @@ export type Blog = {
 export const getBlogs = async (queries?: MicroCMSQueries) =>
   apiClient.getList<Blog>({ endpoint: "blogs", queries });
 
+export const getBlogCount = async ({
+  offset,
+  limit,
+}: {
+  offset: number;
+  limit: number;
+}) => {
+  const data = await apiClient.get({
+    endpoint: "blogs",
+    queries: { offset: offset, limit: limit },
+  });
+
+  return {
+    props: {
+      blog: data.contents,
+      totalCount: data.totalCount,
+    },
+  };
+};
+
 export const getPostDetail = async (
   contentId: string,
   queries?: MicroCMSQueries

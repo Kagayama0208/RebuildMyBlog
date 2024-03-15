@@ -11,7 +11,7 @@ const Header = async () => {
         <div className="flex flex-wrap justify-between items-center  max-md:flex-col max-lg:flex-row">
           <Link href="/" className="px-10">
             <Image
-              src="logo-navigation.svg"
+              src="/static/logo-navigation.svg"
               width="150"
               height="150"
               alt={"logo"}
