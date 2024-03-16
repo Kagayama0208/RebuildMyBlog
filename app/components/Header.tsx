@@ -30,7 +30,11 @@ const Header = async () => {
                   </Link>
                 );
               })}
-              <Link key="posts" href="/posts" className="px-3 hover:font-bold">
+              <Link
+                key="posts"
+                href="/posts/1"
+                className="px-3 hover:font-bold"
+              >
                 記事一覧
               </Link>
             </ul>

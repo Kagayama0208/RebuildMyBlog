@@ -7,12 +7,14 @@ const ArticleCard = ({
   id,
   category,
   createdDate,
+  page
 }: {
   title: string;
   imageURL: string;
   id: string;
   category: string;
   createdDate: string;
+  page: number;
 }) => {
   const date = new Date(createdDate);
   const year = date.getFullYear();
@@ -25,7 +27,7 @@ const ArticleCard = ({
 
   return (
     <div className="block mx-auto my-2 w-11/12 max-w-4xl h-60 bg-white rounded-xl overflow-hidden shadow-lg hover:">
-      <Link href={`/posts/${id}`} className="flex flex-wrap">
+      <Link href={`/posts/${page}/${id}`} className="flex flex-wrap">
         <div className=" relative h-60 w-1/2">
           <Image
             src={`${imageURL}?fit=max&w=400&h=200`}

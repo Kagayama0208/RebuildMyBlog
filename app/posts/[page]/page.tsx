@@ -17,6 +17,7 @@ export default async function BlogsPage({
   params: { page: string };
 }) {
   const id = Number(params.page); // Access the dynamic route parameter if needed
+
   const data = await apiClient.getList({
     endpoint: "blogs",
     queries: { offset: (id - 1) * 5, limit: PER_PAGE },
@@ -37,13 +38,14 @@ export default async function BlogsPage({
                   id={blog.id}
                   category={blog.category.name}
                   createdDate={blog.createdAt}
+                  page={id}
                 />
               )}
             </li>
           );
         })}
       </ul>
-      <Pagination totalCount={totalCount} />
+      <Pagination totalCount={totalCount} currentPage={id} />
     </div>
   );
 }
