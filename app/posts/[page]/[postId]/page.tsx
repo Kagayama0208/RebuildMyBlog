@@ -1,20 +1,57 @@
 import { getBlogs, getPostDetail } from "@/app/libs/getContents";
-import parse from "html-react-parser";
+import parse, {
+  Element,
+  HTMLReactParserOptions,
+  domToReact,
+} from "html-react-parser";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
-export default async function blogPage({ params }: { params: { postId: string } }){
+type Replace = NonNullable<HTMLReactParserOptions["replace"]>;
+
+export default async function blogPage({
+  params,
+}: {
+  params: { postId: string };
+}) {
   const post = await getPostDetail(params.postId);
+
   if (!post) {
     notFound();
   }
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <h2>{post.category.name}</h2>
-      <div>{parse(post.content)}</div>
+    <div className="flex flex-wrap items-center justify-center my-4">
+      <div className=" text-center w-11/12  bg-white rounded-lg px-3 py-4">
+        <h1 className=" text-2xl">{post.title}</h1>
+        <h2>{post.category.name}</h2>
+        <div>
+          {parse(post.content, {
+            replace: (domNode) => {
+              const typeDomNode = domNode as Element;
+              if (!(domNode instanceof Element)) return;
+              if (typeDomNode.attribs && typeDomNode.name === "img") {
+                const { attribs } = typeDomNode;
+                const { width, height }: { width: number; height: number } = {
+                  width: 1280,
+                  height: 720,
+                };
+                return (
+                  <Image
+                    src={attribs.src}
+                    width={width}
+                    height={height}
+                    alt={attribs.alt ? attribs.alt : "Image"}
+                    className="mx-auto"
+                  />
+                );
+              }
+            },
+          })}
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export const generateStaticParams = async () => {
   const { contents } = await getBlogs();
@@ -26,3 +63,7 @@ export const generateStaticParams = async () => {
 
   return [...paths];
 };
+
+// const function replaceImage(params:type) {
+
+// }
