@@ -22,10 +22,34 @@ export type Blog = {
     revisedAt: string;
     name: string;
   };
+  tag: [
+    {
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+      revisedAt: string;
+      name: string;
+    }
+  ];
 } & MicroCMSDate;
 
-export const getBlogs = async (queries?: MicroCMSQueries) =>
-  apiClient.getList<Blog>({ endpoint: "blogs", queries });
+export type Tag = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  name: string;
+};
+
+export const getBlogs = async (queries?: MicroCMSQueries) => {
+  return apiClient.getList<Blog>({ endpoint: "blogs", queries });
+};
+
+export const getAllTags = async () => {
+  return apiClient.getList<Tag>({ endpoint: "tags" });
+};
 
 export const getBlogCount = async ({
   offset,
@@ -59,5 +83,5 @@ export const getPostDetail = async (
   return detailData;
 };
 
-export const getCategories = (queries?: MicroCMSQueries) =>
+export const getCategories = async (queries?: MicroCMSQueries) =>
   apiClient.getList<Category>({ endpoint: "categories", queries });

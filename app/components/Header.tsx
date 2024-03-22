@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { getCategories } from "../libs/getContents";
@@ -23,7 +24,10 @@ const Header = async () => {
                 return (
                   <Link
                     key={category.id}
-                    href="#"
+                    href={{
+                      pathname: "/posts",
+                      query: { category: category.id },
+                    }}
                     className="px-3 hover:font-bold"
                   >
                     <li className="">{category.name}</li>

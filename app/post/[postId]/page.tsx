@@ -23,7 +23,12 @@ export default async function blogPage({
     <div className="flex flex-wrap items-center justify-center my-4">
       <div className=" text-center w-11/12  bg-white rounded-lg px-3 py-4">
         <h1 className=" text-2xl">{post.title}</h1>
-        <h2>{post.category.name}</h2>
+        <div className="flex flex-wrap items-center justify-center">
+          <h2 className=" rounded-md bg-green-200 w-52 ">
+            カテゴリー:{post.category.name}
+          </h2>
+        </div>
+
         <div>
           {parse(post.content, {
             replace: (domNode) => {
@@ -63,7 +68,3 @@ export const generateStaticParams = async () => {
 
   return [...paths];
 };
-
-// const function replaceImage(params:type) {
-
-// }
