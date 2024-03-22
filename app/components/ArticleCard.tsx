@@ -18,7 +18,7 @@ const ArticleCard = ({
   category: string;
   createdDate: string;
   page?: number;
-  tag: [
+  tag?: [
     {
       id: string;
       createdAt: string;
@@ -62,7 +62,11 @@ const ArticleCard = ({
             <p>タグ：</p>
             {tag &&
               tag.map((t) => {
-                return <p key={t.id} className="pr-2">{t.name}</p>;
+                return (
+                  <p key={t.id} className="pr-2">
+                    {t.name}
+                  </p>
+                );
               })}
           </div>
           <div className=" relative ">

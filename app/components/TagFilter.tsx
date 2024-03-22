@@ -27,7 +27,7 @@ const TagFilter = ({
   const tagClick = (e: React.MouseEvent) => {
     const targetElement = e.target as Element;
     const tagSearch = targetElement.getAttribute("data-tag");
-
+    console.log(tagSearch);
     if (tagSearch) {
       let newActiveTags: string[];
       if (activeTags?.includes(tagSearch)) {
@@ -38,16 +38,26 @@ const TagFilter = ({
           tagSearch,
         ];
       }
+
+      console.log(newActiveTags);
+      console.log(newActiveTags.length);
       setActiveTags(newActiveTags);
-      const tagArray = postsData.filter(({ tag }) => {
-        if (!tag || newActiveTags.includes("all")) {
-          return postsData;
-        } else {
-          return tag.some((t) => {
-            return newActiveTags.includes(t.name);
-          });
-        }
-      });
+      // tagArrayには表示するポストが欲しい
+      let tagArray;
+      if (newActiveTags.length === 0) {
+        setActiveTags(["all"]);
+        tagArray = postsData;
+      } else {
+        tagArray = postsData.filter(({ tag }) => {
+          if (newActiveTags.includes("all")) {
+            return true;
+          } else {
+            return tag.some((t) => {
+              return newActiveTags.includes(t.name);
+            });
+          }
+        });
+      }
       console.log(tagArray);
       setDisplayItems(tagArray);
     }
@@ -74,13 +84,12 @@ const TagFilter = ({
             })}
           </div>
           <button
-            onClick={() => {
-              setDisplayItems(allPosts.contents), setActiveTags(["all"]);
-            }}
+            onClick={tagClick}
             className={`searchbutton__tag px-2 py-1 mx-1 my-1 rounded-full ${
               activeTags.includes("all") ? "active bg-lime-600" : ""
             }`}
             key="allPosts"
+            data-tag="all"
           >
             # AllPosts
           </button>
