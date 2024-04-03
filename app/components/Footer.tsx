@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import GetSnsIcon from "./logo/GetSnsIcon";
+import ScrollToTop from "./ScrollToTop";
 
 const list = [
   {
@@ -17,6 +18,8 @@ const Footer = () => {
   return (
     <footer className=" mt-4 bg-white h-36 flex justify-center items-center text-black border-gray-200  ">
       <div className="">
+        <ScrollToTop />
+
         <div className="">
           <ul className="flex justify-center items-center">
             {list.map((item) => (

@@ -85,3 +85,5 @@ export const getPostDetail = async (
 
 export const getCategories = async (queries?: MicroCMSQueries) =>
   apiClient.getList<Category>({ endpoint: "categories", queries });
+
+
