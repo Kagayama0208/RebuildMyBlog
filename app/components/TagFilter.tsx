@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Blog } from "../libs/getContents";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import ArticleCard from "./ArticleCard";
 import { Pagination } from "./Pagination";
+import gsap from "gsap";
 
 const TagFilter = ({
   pageParams,
@@ -62,6 +63,33 @@ const TagFilter = ({
       setDisplayItems(tagArray);
     }
   };
+  // フワっと表示するアニメーション
+  const postRef = useRef<HTMLUListElement | null>(null); //useRef hook でポストelementを保存
+  useLayoutEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const articleCard = entry.target as HTMLElement;
+          gsap.fromTo(
+            articleCard,
+            {
+              x: 50,
+              opacity: 0,
+            },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 3, // Adjust duration as needed
+              ease: "power3.out", // Adjust easing as needed
+            }
+          );
+        }
+      });
+    });
+    const articleCards = postRef.current?.querySelectorAll(".post");
+    articleCards?.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [postRef]);
 
   return (
     <div className=" w-4/5">
@@ -94,11 +122,11 @@ const TagFilter = ({
             # AllPosts
           </button>
         </div>
-        <ul className="js-show-on-scroll">
+        <ul className="js-show-on-scroll" ref={postRef}>
           {displayItems.map((blog, index) => {
             if (index >= startIndex && index < endIndex) {
               return (
-                <li key={blog.id} className="flex flex-wrap">
+                <li key={blog.id} className="flex flex-wrap post">
                   {blog.eyecatch?.url && (
                     <ArticleCard
                       title={blog.title}

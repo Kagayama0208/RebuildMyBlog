@@ -1,26 +1,58 @@
+"use client";
+
+import { MicroCMSListResponse } from "microcms-js-sdk";
 import { apiClient } from "../libs/apiClient";
-import { getBlogs } from "../libs/getContents";
+import { Blog, getBlogs } from "../libs/getContents";
 import ArticleCard from "./ArticleCard";
 import { Pagination } from "./Pagination";
-
-const CategoryPage = async ({
-  categoryId,
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+const CategoryPage = ({
   currentPage,
+  postsData,
 }: {
-  categoryId: string;
   currentPage: number;
+  postsData: MicroCMSListResponse<Blog>;
 }) => {
-  const filteredPosts = await getBlogs({
-    filters: `category[equals]${categoryId}`,
-  });
+  const filteredPosts = postsData;
   const totalCount = filteredPosts.totalCount;
+  // animation
+  const postsRef = useRef<HTMLUListElement | null>(null);
+  useLayoutEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const articleCard = entry.target as HTMLElement;
+          gsap.fromTo(
+            articleCard,
+            {
+              x: 50,
+              opacity: 0,
+            },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 3, // Adjust duration as needed
+              ease: "power3.out", // Adjust easing as needed
+            }
+          );
+        }
+      });
+    });
+    const articleCards = postsRef.current?.querySelectorAll(".post");
+    articleCards?.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [postsRef]);
   return (
     <div>
       <h1 className="text-3xl text-center py-5">記事一覧</h1>
-      <ul className="js-show-on-scroll">
+      <h2 className="text-xl text-center py-5">
+        カテゴリー：{postsData.contents[0].category.name}
+      </h2>
+      <ul className="js-show-on-scroll" ref={postsRef}>
         {filteredPosts.contents.map((blog) => {
           return (
-            <li key={blog.id} className="flex flex-wrap">
+            <li key={blog.id} className="post flex flex-wrap">
               {blog.eyecatch?.url && (
                 <ArticleCard
                   title={blog.title}
@@ -39,7 +71,5 @@ const CategoryPage = async ({
     </div>
   );
 };
-
-
 
 export default CategoryPage;

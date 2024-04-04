@@ -20,10 +20,7 @@ const Header = async () => {
                 return (
                   <Link
                     key={category.id}
-                    href={{
-                      pathname: "/posts",
-                      query: { category: category.id },
-                    }}
+                    href={`/categories/${category.id}/1/`}
                     className="px-3 transition-all hover:scale-110 hover:font-bold"
                   >
                     <li className="">{category.name}</li>

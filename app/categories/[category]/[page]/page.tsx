@@ -1,7 +1,9 @@
 import ArticleCard from "@/app/components/ArticleCard";
+import CategoryPage from "@/app/components/CategoryPage";
 import { Pagination } from "@/app/components/Pagination";
 import { apiClient } from "@/app/libs/apiClient";
 import { getBlogs, getCategories } from "@/app/libs/getContents";
+import { useLayoutEffect, useRef } from "react";
 
 const PER_PAGE = 6;
 export default async function categoryPages({
@@ -22,18 +24,23 @@ export default async function categoryPages({
   console.log(categoryName);
   const category = categoryName.contents[0].name;
   if (data.totalCount === 0) {
-    return <h1 className="text-3xl flex justify-center text-center my-4">お探しの記事が見つかりません</h1>;
+    return (
+      <h1 className="text-3xl flex justify-center text-center my-4">
+        お探しの記事が見つかりません
+      </h1>
+    );
   }
+
   return (
     <div>
       <div>
-        <h1 className="text-3xl flex justify-center text-center my-4">
+        {/* <h1 className="text-3xl flex justify-center text-center my-4">
           カテゴリー：<div className={``}>{category}</div>
         </h1>
         <ul className="js-show-on-scroll">
           {data.contents.map((blog) => {
             return (
-              <li key={blog.id} className="flex flex-wrap">
+              <li key={blog.id} className="flex flex-wrap post">
                 {blog.eyecatch?.url && (
                   <ArticleCard
                     title={blog.title}
@@ -48,7 +55,8 @@ export default async function categoryPages({
             );
           })}
         </ul>
-        <Pagination totalCount={totalCount} currentPage={id} />
+        <Pagination totalCount={totalCount} currentPage={id} /> */}
+        <CategoryPage currentPage={id} postsData={data} />
       </div>
     </div>
   );

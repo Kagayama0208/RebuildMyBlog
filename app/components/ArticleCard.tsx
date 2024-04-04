@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 
 const ArticleCard = ({
   title,
@@ -38,8 +40,13 @@ const ArticleCard = ({
     .toString()
     .padStart(2, "0")}`;
 
+  // animation
+
   return (
-    <div className="block mx-auto my-2 w-11/12 max-w-4xl h-60 bg-white rounded-xl overflow-hidden shadow-lg hover:">
+    <div
+      id="post"
+      className="post block mx-auto my-2 w-11/12 max-w-4xl h-60 bg-white rounded-xl overflow-hidden shadow-lg hover:"
+    >
       <Link href={`/post/${id}`} className="flex flex-wrap">
         <div className=" relative h-60 w-1/2">
           <Image
