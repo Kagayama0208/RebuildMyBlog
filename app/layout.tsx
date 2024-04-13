@@ -63,11 +63,12 @@ export default function RootLayout({
   gtag('js', new Date());
   gtag('config', 'G-H6EK669P4K');`}
       </Script>
-      <SpeedInsights />
+
       <body className={`${TiltNeon.variable} `}>
         <Header />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
