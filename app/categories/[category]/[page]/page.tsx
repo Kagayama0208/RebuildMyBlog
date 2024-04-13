@@ -1,11 +1,30 @@
-import ArticleCard from "@/app/components/ArticleCard";
 import CategoryPage from "@/app/components/CategoryPage";
-import { Pagination } from "@/app/components/Pagination";
 import { apiClient } from "@/app/libs/apiClient";
 import { getBlogs, getCategories } from "@/app/libs/getContents";
-import { useLayoutEffect, useRef } from "react";
 
-const PER_PAGE = 6;
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { page: string; category: string };
+}): Promise<Metadata> {
+  const categoryName = await getCategories({
+    filters: `id[equals]${params.category}`,
+    fields: `name`,
+  });
+  const metadataBase = new URL(
+    `https://romi-travel.com/category/${params.category}/${params.page}`
+  );
+  return {
+    title: categoryName.contents[0].name,
+    description: `このページは${categoryName.contents[0].name}の記事一覧です`,
+    metadataBase: metadataBase,
+  };
+}
+
+const PER_PAGE = 12;
+
 export default async function categoryPages({
   params,
 }: {
@@ -14,18 +33,11 @@ export default async function categoryPages({
   const data = await getBlogs({
     filters: `category[equals]${params.category}`,
   });
-  // console.log(data);
   const id = Number(params.page);
-  const totalCount = data.totalCount;
-  const categoryName = await getCategories({
-    filters: `id[equals]${params.category}`,
-    fields: `name`,
-  });
-  console.log(categoryName);
-  const category = categoryName.contents[0].name;
+
   if (data.totalCount === 0) {
     return (
-      <h1 className="text-3xl flex justify-center text-center my-4">
+      <h1 className="text-3xl h-screen flex justify-center text-center">
         お探しの記事が見つかりません
       </h1>
     );
@@ -34,28 +46,6 @@ export default async function categoryPages({
   return (
     <div>
       <div>
-        {/* <h1 className="text-3xl flex justify-center text-center my-4">
-          カテゴリー：<div className={``}>{category}</div>
-        </h1>
-        <ul className="js-show-on-scroll">
-          {data.contents.map((blog) => {
-            return (
-              <li key={blog.id} className="flex flex-wrap post">
-                {blog.eyecatch?.url && (
-                  <ArticleCard
-                    title={blog.title}
-                    imageURL={blog.eyecatch.url}
-                    id={blog.id}
-                    category={blog.category.name}
-                    createdDate={blog.createdAt}
-                    page={id}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
-        <Pagination totalCount={totalCount} currentPage={id} /> */}
         <CategoryPage currentPage={id} postsData={data} />
       </div>
     </div>

@@ -1,13 +1,27 @@
 import { getBlogs, getPostDetail } from "@/app/libs/getContents";
-import parse, {
-  Element,
-  HTMLReactParserOptions,
-  domToReact,
-} from "html-react-parser";
+import parse, { Element, HTMLReactParserOptions } from "html-react-parser";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-
+import { Metadata } from "next";
 type Replace = NonNullable<HTMLReactParserOptions["replace"]>;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { postId: string };
+}): Promise<Metadata> {
+  const post = await getPostDetail(params.postId);
+  const metadataBase = new URL(`https://romi-travel.com/post/${params.postId}`);
+  return {
+    title: post.title,
+    description: post.content.slice(0, 50),
+    openGraph: {
+      images: post.eyecatch?.url,
+    },
+    keywords: post.tag.map((e) => e.name),
+    metadataBase: metadataBase,
+  };
+}
 
 export default async function blogPage({
   params,

@@ -58,9 +58,9 @@ const Menu = ({
   });
 
   return (
-    <div className="w-full h-4 md:hidden py-3 mx-auto z-40">
+    <div className="w-full h-4  py-3 mx-auto z-50  md:hidden">
       <div
-        className="menu-container opacity-0 flex justify-center text-center z-30 relative  text-lg"
+        className="menu-container  flex justify-center text-center z-40 relative  bg-customGrey  text-lg w-full"
         id="fadeInBox"
         ref={container}
       >
@@ -69,13 +69,13 @@ const Menu = ({
             <p>カテゴリー</p>
           </div>
         </div>
-        <div className="menu-overlay  absolute  hidden z-30" onClick={toggleMenu}>
+        <div
+          className="menu-overlay  absolute  hidden z-50"
+          onClick={toggleMenu}
+        >
           <div className="menu-overlay-bar">
             <div className="menu-logo">
               <div>カテゴリー</div>
-            </div>
-            <div className="menu-close">
-              <p>Close</p>
             </div>
           </div>
           <div className="menu-close-icon">
@@ -93,9 +93,6 @@ const Menu = ({
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="menu-preview">
-              <p>View Show More</p>
             </div>
           </div>
         </div>

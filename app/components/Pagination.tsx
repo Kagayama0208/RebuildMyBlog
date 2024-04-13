@@ -8,7 +8,7 @@ export const Pagination = ({
   currentPage: number;
 }) => {
   const PER_PAGE = 5;
-  console.log(currentPage);
+  // console.log(currentPage);
   const range = (start: number, end: number) =>
     [...Array(end - start + 1)].map((_, i) => start + i);
 

@@ -7,21 +7,21 @@ const Header = async () => {
   const { contents: categories } = await getCategories();
   // console.log(categories);
   return (
-    <header className=" bg-customGrey  z-50 ">
+    <header className=" bg-customGrey z-50 header relative">
       <nav className=" border-gray-200 px-4 lg:px-6 py-6 dark:bg-gray-800 border-b text-gray-600 ">
         <div className="flex flex-wrap justify-between items-center  max-md:flex-col max-lg:flex-row">
-          <Link href="/" className="px-10 text-center">
+          <Link href="/" className="px-10 text-center max-md:mx-auto">
             <h1 className="text-5xl">RoMi</h1>
             <p>roaming mindfully</p>
           </Link>
           <div className="max-md:pt-2">
-            <ul className="flex flex-wrap flex-row items-center max-md:hidden">
+            <ul className="flex flex-wrap flex-row items-center z-50 max-md:hidden ">
               {categories.map((category) => {
                 return (
                   <Link
                     key={category.id}
                     href={`/categories/${category.id}/1/`}
-                    className="px-3 transition-all hover:scale-110 hover:font-bold"
+                    className="px-3  hover:scale-110 hover:font-bold z-50"
                   >
                     <li className="">{category.name}</li>
                   </Link>
@@ -34,9 +34,16 @@ const Header = async () => {
               >
                 記事一覧
               </Link>
+              <Link
+                key="home"
+                href="/"
+                className="px-3 hover:font-bold hover:scale-110 "
+              >
+                ホーム
+              </Link>
             </ul>
           </div>
-          <div className="w-full">
+          <div className="w-full h-full bg-customGrey">
             <Menu categoryList={categories} />
           </div>
         </div>

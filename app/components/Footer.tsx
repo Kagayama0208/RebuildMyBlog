@@ -9,7 +9,7 @@ const list = [
     text: "Instagram",
   },
   {
-    href: "twitter.com",
+    href: "https://twitter.com/kagayama_kk",
     text: "Twitter",
   },
 ];

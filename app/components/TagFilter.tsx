@@ -28,7 +28,7 @@ const TagFilter = ({
   const tagClick = (e: React.MouseEvent) => {
     const targetElement = e.target as Element;
     const tagSearch = targetElement.getAttribute("data-tag");
-    console.log(tagSearch);
+    // console.log(tagSearch);
     if (tagSearch) {
       let newActiveTags: string[];
       if (activeTags?.includes(tagSearch)) {

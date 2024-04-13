@@ -44,7 +44,15 @@ export type Tag = {
 };
 
 export const getBlogs = async (queries?: MicroCMSQueries) => {
-  return apiClient.getList<Blog>({ endpoint: "blogs", queries });
+  return apiClient.getList<Blog>({
+    endpoint: "blogs",
+    queries,
+    customRequestInit: {
+      next: {
+        revalidate: 60 * 60,
+      },
+    },
+  });
 };
 
 export const getAllTags = async () => {
@@ -61,6 +69,11 @@ export const getBlogCount = async ({
   const data = await apiClient.get({
     endpoint: "blogs",
     queries: { offset: offset, limit: limit },
+    customRequestInit: {
+      next: {
+        revalidate: 60 * 60,
+      },
+    },
   });
 
   return {
@@ -79,11 +92,14 @@ export const getPostDetail = async (
     endpoint: "blogs",
     contentId,
     queries,
+    customRequestInit: {
+      next: {
+        revalidate: 60 * 60,
+      },
+    },
   });
   return detailData;
 };
 
 export const getCategories = async (queries?: MicroCMSQueries) =>
   apiClient.getList<Category>({ endpoint: "categories", queries });
-
-

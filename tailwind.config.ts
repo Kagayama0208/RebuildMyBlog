@@ -11,7 +11,9 @@ const config: Config = {
       colors: {
         customGrey: "#D9D9D9",
       },
-
+      fontFamily: {
+        TiltNeon: ["var(--font-TiltNeon)"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

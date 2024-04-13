@@ -8,10 +8,10 @@ const Loading = () => {
     gsap.fromTo(
       ".loading",
       {
-        y: 30,
+        y: 0,
       },
       {
-        y: 0,
+        y: 50,
       }
     );
   }, [textRef]);

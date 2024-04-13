@@ -26,8 +26,20 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.header {
+  z-index: 99;
 }
