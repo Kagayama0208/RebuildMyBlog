@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const TiltNeon = Tilt_Neon({ subsets: ["latin"], variable: "--font-TiltNeon" });
 
@@ -62,6 +63,7 @@ export default function RootLayout({
   gtag('js', new Date());
   gtag('config', 'G-H6EK669P4K');`}
       </Script>
+      <SpeedInsights />
       <body className={`${TiltNeon.variable} `}>
         <Header />
         {children}
