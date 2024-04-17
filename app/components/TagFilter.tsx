@@ -123,7 +123,7 @@ const TagFilter = ({
           </button>
         </div>
         <ul
-          className="js-show-on-scroll flex flex-wrap flex-col justify-center items-center gap-2 "
+          className="js-show-on-scroll flex flex-wrap flex-col justify-center items-center gap-2 w-full"
           ref={postRef}
         >
           {displayItems.map((blog, index) => {

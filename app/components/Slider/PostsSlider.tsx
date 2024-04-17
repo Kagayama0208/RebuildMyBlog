@@ -70,6 +70,7 @@ const PostsSlider = ({
             clickable: true,
           }}
           modules={[Pagination]}
+          loop={true}
           className="mySwiper"
         >
           {posts.map((content) => {

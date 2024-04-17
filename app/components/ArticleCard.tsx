@@ -46,22 +46,17 @@ const ArticleCard = ({
   return (
     <div
       id="post"
-      className="post md:h-[250px] mx-auto my-2 w-full bg-white rounded-xl overflow-hidden shadow-lg md:w-11/12 md:max-w-4xl flex justify-center"
+      className="post md:h-[250px] mx-auto my-2 w-full bg-white rounded-xl overflow-hidden  md:w-[650]  flex justify-center"
     >
-      <Link
-        href={`/post/${id}`}
-        className="flex flex-col max-w-[350px] md:flex-row md:max-w-4xl"
-      >
-        <div className="w-full md:w-1/2 eyecatch-image">
+      <Link href={`/post/${id}`} className="flex flex-col  md:flex-row w-full">
+        <div className="w-full md:w-1/2 eyecatch-image  overflow-hidden">
           <Image
             src={`${imageURL}?fit=max&w=400&h=400`}
             alt="blog eyecatch"
             width={400}
             height={400}
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
+            quality={100}
+            objectFit="cover"
           />
         </div>
 
