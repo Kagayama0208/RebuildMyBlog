@@ -36,12 +36,10 @@ export const metadata: Metadata = {
   authors: {
     name: "Kosuke Kagayama",
   },
-  // verification:{
-  //   google: ''
-  // },
-  // alternates: {
-  //   canonical: ""
-  // }
+  verification: {
+    google:
+      '<meta name="google-site-verification" content="AOPnR66iiBlMDgHyRDuPSs2RddS0Gevcm6dLMtnF5ro" />',
+  },
 };
 
 export default function RootLayout({

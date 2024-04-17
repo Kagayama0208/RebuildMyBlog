@@ -79,7 +79,7 @@ const TagFilter = ({
             {
               x: 0,
               opacity: 1,
-              duration: 3, // Adjust duration as needed
+              duration: 2, // Adjust duration as needed
               ease: "power3.out", // Adjust easing as needed
             }
           );
@@ -122,11 +122,17 @@ const TagFilter = ({
             # AllPosts
           </button>
         </div>
-        <ul className="js-show-on-scroll" ref={postRef}>
+        <ul
+          className="js-show-on-scroll flex flex-wrap flex-col justify-center items-center gap-2 "
+          ref={postRef}
+        >
           {displayItems.map((blog, index) => {
             if (index >= startIndex && index < endIndex) {
               return (
-                <li key={blog.id} className="flex flex-wrap post">
+                <li
+                  key={blog.id}
+                  className="post max-w-[350px] md:flex-row md:w-11/12 md:max-w-4xl"
+                >
                   {blog.eyecatch?.url && (
                     <ArticleCard
                       title={blog.title}

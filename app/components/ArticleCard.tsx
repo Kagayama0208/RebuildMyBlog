@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { CiCalendarDate, CiShoppingTag } from "react-icons/ci";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -45,28 +46,35 @@ const ArticleCard = ({
   return (
     <div
       id="post"
-      className="post block mx-auto my-2 w-11/12 max-w-4xl h-60 bg-white rounded-xl overflow-hidden shadow-lg hover:"
+      className="post md:h-[250px] mx-auto my-2 w-full bg-white rounded-xl overflow-hidden shadow-lg md:w-11/12 md:max-w-4xl flex justify-center"
     >
-      <Link href={`/post/${id}`} className="flex flex-wrap">
-        <div className=" relative h-60 w-1/2">
+      <Link
+        href={`/post/${id}`}
+        className="flex flex-col max-w-[350px] md:flex-row md:max-w-4xl"
+      >
+        <div className="w-full md:w-1/2 eyecatch-image">
           <Image
-            src={`${imageURL}?fit=max&w=400&h=200`}
+            src={`${imageURL}?fit=max&w=400&h=400`}
             alt="blog eyecatch"
-            className=""
-            layout="fill"
-            objectFit="cover"
-            quality={70}
+            width={400}
+            height={400}
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
           />
         </div>
 
-        <div className=" w-1/2 px-3">
+        <div className=" md:w-1/2 w-full p-5 text-com">
           <h2 className=" font-bold text-xl py-2 ">{title}</h2>
           <div className="flex">
             <p>カテゴリ：</p>
             {category && <p>{category}</p>}
           </div>
           <div className="flex">
-            <p>タグ：</p>
+            <p className="flex items-center justify-center">
+              <CiShoppingTag />:
+            </p>
             {tag &&
               tag.map((t) => {
                 return (
@@ -76,8 +84,10 @@ const ArticleCard = ({
                 );
               })}
           </div>
-          <div className=" relative ">
-            <p className=" absolute top-1/2">{formattedDate}</p>
+          <div>
+            <p className="flex items-center">
+              <CiCalendarDate />: {formattedDate}
+            </p>
           </div>
         </div>
       </Link>

@@ -52,7 +52,10 @@ const CategoryPage = ({
       <ul className="js-show-on-scroll" ref={postsRef}>
         {filteredPosts.contents.map((blog) => {
           return (
-            <li key={blog.id} className="post flex flex-wrap">
+            <li
+              key={blog.id}
+              className="post flex flex-wrap max-w-[350px] md:flex-row md:w-11/12 md:max-w-4xl mx-auto"
+            >
               {blog.eyecatch?.url && (
                 <ArticleCard
                   title={blog.title}

@@ -22,10 +22,9 @@ const AnimateSection = () => {
     );
 
     gsap.fromTo(
-      "*",
+      "main",
       {
         y: 50,
-        opacity: 0,
       },
       {
         scrollTrigger: {

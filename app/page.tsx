@@ -5,8 +5,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import ImageSlider from "./components/imageSlider/ImageSlider";
+import ImageSlider from "./components/Slider/ImageSlider";
+import PostsSlider from "./components/Slider/PostsSlider";
 import AnimateSection from "./components/AnimationSection";
+import { getBlogs } from "./libs/getContents";
 
 export const metadata: Metadata = {
   description:
@@ -27,28 +29,24 @@ const slideImages = [
   { src: "/images/3-4/fuji5.jpg", alt: "fuji5" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const newPostsList = await getBlogs({ limit: 5 });
+  const newPosts = newPostsList.contents;
   return (
-    <main className="block h-auto">
+    <main className="block z-10">
       <AnimateSection />
       <div>
         <div className="w-full">
-          <div className="smooth-content w-full h-full flex items-center justify-center bg-gray-950">
-            <div className="mx-auto h-[823px] w-[1440px] relative">
-              <div className=" absolute inset-0 flex top-1/3 justify-center z-20 text-4xl">
-                Roam Mindfully
+          <section id="newPosts" className=" my-3">
+            <div className="smooth-content w-full flex items-center justify-center flex-col">
+              <h1 className="text-4xl">新着記事</h1>
+
+              <div className="flex  items-center justify-center mx-auto px-10 w-full">
+                <PostsSlider postsList={newPosts} />
               </div>
-              {/* width="1440"
-            height="832" */}
-              <Image
-                src="/images/fuji-2.jpg"
-                alt="富士山"
-                layout="fill"
-                className=" absolute"
-                objectFit="cover"
-              />
             </div>
-          </div>
+          </section>
+
           <div
             className="max-w-[822px] flex md:flex-row items-center justify-center my-6 md:w-3/4 w-5/6 mx-auto flex-col"
             id="introduction"
