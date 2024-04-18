@@ -64,11 +64,11 @@ const Menu = ({
   });
 
   return (
-    <nav className="nav w-screen h-full  z-50">
-      <div className="wrapper h-full relative" ref={container}>
-        <div className="top-menu h-full max-w-6xl flex flex-wrap justify-between text-center items-center mx-auto">
+    <nav className="nav w-screen h-full z-50">
+      <div className="wrapper h-full relative mx-auto" ref={container}>
+        <div className="top-menu flex h-full w-full max-w-6xl justify-between text-center items-center mx-auto ">
           <div>
-            <Link href="/" className=" text-xl px-4">
+            <Link href="/" className=" text-xl px-4 md:text-3xl">
               RoMi
             </Link>
           </div>
@@ -79,7 +79,7 @@ const Menu = ({
             </div>
           </div>
 
-          <ul className="md:flex hidden flex-wrap flex-row w-full">
+          <ul className="md:flex hidden flex-wrap flex-row">
             {formattedList.map((link, index) => (
               <div className="menu-link-item p-5" key={index}>
                 <div className="menu-link-item-holder">
