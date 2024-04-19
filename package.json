@@ -12,6 +12,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.0",
     "@vercel/speed-insights": "^1.0.10",
+    "cheerio": "^1.0.0-rc.12",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "html-react-parser": "^5.1.10",

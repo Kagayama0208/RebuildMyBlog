@@ -3,6 +3,7 @@ import parse, { Element, HTMLReactParserOptions } from "html-react-parser";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Metadata } from "next";
+import * as cheerio from "cheerio";
 type Replace = NonNullable<HTMLReactParserOptions["replace"]>;
 
 export async function generateMetadata({
@@ -33,6 +34,17 @@ export default async function blogPage({
   if (!post) {
     notFound();
   }
+  const $ = cheerio.load(post.content);
+
+  const headings = $("h1, h2, h3, h4, h5").toArray();
+
+  const toc = headings.map((data: any) => ({
+    text: data.children[0].data,
+    id: data.attribs.id,
+    name: data.name,
+  }));
+
+  console.log(toc);
   return (
     <div className="flex flex-wrap items-center justify-center my-4">
       <div className=" text-center w-11/12  bg-white rounded-lg px-3 py-4">
@@ -41,6 +53,19 @@ export default async function blogPage({
           <h2 className=" rounded-md bg-green-200 w-52 ">
             カテゴリー:{post.category.name}
           </h2>
+        </div>
+
+        <div className="m-4 bg-slate-400 w-60 mx-auto rounded-lg text-gray-100">
+          <section id="table-contents">
+            <h2>目次</h2>
+            <ul id="lists">
+              {toc.map((toc, index) => (
+                <li id={toc.id} key={index} className="gap-1">
+                  <a href={`#${toc.id}`}>{toc.text}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
 
         <div>

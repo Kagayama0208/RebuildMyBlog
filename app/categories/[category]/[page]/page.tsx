@@ -37,7 +37,7 @@ export default async function categoryPages({
 
   if (data.totalCount === 0) {
     return (
-      <h1 className="text-3xl h-screen flex justify-center text-center">
+      <h1 className="text-3xl w-full h-screen flex justify-center text-center">
         お探しの記事が見つかりません
       </h1>
     );
