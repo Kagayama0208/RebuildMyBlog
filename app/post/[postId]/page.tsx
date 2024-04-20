@@ -6,6 +6,8 @@ import { Metadata } from "next";
 import * as cheerio from "cheerio";
 type Replace = NonNullable<HTMLReactParserOptions["replace"]>;
 
+import "./style.css";
+
 export async function generateMetadata({
   params,
 }: {
@@ -34,8 +36,8 @@ export default async function blogPage({
   if (!post) {
     notFound();
   }
+  // 目次
   const $ = cheerio.load(post.content);
-
   const headings = $("h1, h2, h3, h4, h5").toArray();
 
   const toc = headings.map((data: any) => ({
@@ -44,23 +46,22 @@ export default async function blogPage({
     name: data.name,
   }));
 
-  console.log(toc);
   return (
     <div className="flex flex-wrap items-center justify-center my-4">
       <div className=" text-center w-11/12  bg-white rounded-lg px-3 py-4">
         <h1 className=" text-2xl">{post.title}</h1>
         <div className="flex flex-wrap items-center justify-center">
-          <h2 className=" rounded-md bg-green-200 w-52 ">
+          <p className=" rounded-md bg-green-200 w-52 ">
             カテゴリー:{post.category.name}
-          </h2>
+          </p>
         </div>
 
-        <div className="m-4 bg-slate-400 w-60 mx-auto rounded-lg text-gray-100">
+        <div className="m-4 py-5 px-9 bg-slate-400 w-60 mx-auto rounded-lg text-gray-100">
           <section id="table-contents">
-            <h2>目次</h2>
-            <ul id="lists">
+            <h2 className="text-2xl">目次</h2>
+            <ul id="lists" className="text-lg">
               {toc.map((toc, index) => (
-                <li id={toc.id} key={index} className="gap-1">
+                <li id={toc.id} key={index} className="gap-2">
                   <a href={`#${toc.id}`}>{toc.text}</a>
                 </li>
               ))}
@@ -68,7 +69,7 @@ export default async function blogPage({
           </section>
         </div>
 
-        <div>
+        <div className="text-left w-3/4 mx-auto">
           {parse(post.content, {
             replace: (domNode) => {
               const typeDomNode = domNode as Element;
@@ -85,6 +86,7 @@ export default async function blogPage({
                     width={width}
                     height={height}
                     alt={attribs.alt ? attribs.alt : "Image"}
+                    quality={100}
                     className="mx-auto"
                   />
                 );
