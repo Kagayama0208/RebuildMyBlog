@@ -64,7 +64,7 @@ export default function RootLayout({
 
       <body className={`${TiltNeon.variable} `}>
         <Header />
-        <div className="h-screen">{children}</div>
+        <div className="h-full">{children}</div>
 
         <Footer />
         <SpeedInsights />

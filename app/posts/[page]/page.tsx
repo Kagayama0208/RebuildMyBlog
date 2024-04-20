@@ -26,7 +26,7 @@ export default async function BlogsPage({
 
   return (
     <div>
-      <div>
+      <div className="h-full">
         <h1 className="text-3xl text-center py-5">記事一覧</h1>
         <div className="flex flex-wrap text-center justify-center">
           <TagFilter
