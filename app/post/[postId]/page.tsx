@@ -61,7 +61,7 @@ export default async function blogPage({
             <h2 className="text-2xl">目次</h2>
             <ul id="lists" className="text-lg">
               {toc.map((toc, index) => (
-                <li id={toc.id} key={index} className="gap-2">
+                <li id={toc.name} key={index} className="gap-2">
                   <a href={`#${toc.id}`}>{toc.text}</a>
                 </li>
               ))}
