@@ -1,0 +1,16 @@
+.menu-link-item {
+  font-weight: bold;
+  border-left-width: 1px;
+  border-color: gray;
+}
+
+.last-link {
+  border-right-width: 1px;
+  border-color: gray;
+}
+
+.menu-link-item:hover {
+  transition: 1s;
+  color: blue;
+  opacity: 0.5;
+}

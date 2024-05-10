@@ -37,12 +37,55 @@ export default async function Home() {
       <AnimateSection />
       <div>
         <div className="w-full">
-          <section id="newPosts" className=" my-3">
+          {/* tablet & smart phone */}
+          <section id="newPosts" className=" hidden my-3 max-lg:block">
             <div className="smooth-content w-full flex items-center justify-center flex-col">
               <h1 className="text-4xl">新着記事</h1>
 
               <div className="flex  items-center justify-center mx-auto px-10 w-full">
                 <PostsSlider postsList={newPosts} />
+              </div>
+            </div>
+          </section>
+          {/* PC */}
+          <section className=" w-11/12 flex justify-center mx-auto my-5 max-lg:hidden ">
+            <div id="big-card" className="px-2 h-full flex">
+              <div className="border-r-2 border-gray-300 px-2">
+                <div>
+                  <Image
+                    src={newPosts[0].eyecatch?.url}
+                    width="1000"
+                    height="667"
+                    alt={newPosts[0].title}
+                  />
+                </div>
+                <h1 className="text-3xl my-3">{newPosts[0].title}</h1>
+                <p>カテゴリー：{newPosts[0].category.name}</p>
+                <p>{newPosts[0].updatedAt}</p>
+              </div>
+              <div id="small-card-wrapper">
+                <div className="mx-4 border-b-2 border-gray-300 h-1/2 mb-2">
+                  <Image
+                    src={newPosts[1].eyecatch?.url}
+                    width="500"
+                    height="300"
+                    alt={newPosts[1].title}
+                  />
+                  <h1 className="text-xl my-1">{newPosts[1].title}</h1>
+                  <p>カテゴリー：{newPosts[1].category.name}</p>
+                  <p>{newPosts[1].updatedAt}</p>
+                </div>
+                <div className="mx-4 border-b-2 border-gray-300 h-1/2">
+                  <Image
+                    src={newPosts[2].eyecatch?.url}
+                    width="500"
+                    height="300"
+                    alt={newPosts[2].title}
+                  />
+                  <h1 className="text-xl my-1">{newPosts[2].title}</h1>
+                  <p>カテゴリー：{newPosts[2].category.name}</p>
+                  <p>{newPosts[2].updatedAt}</p>
+                </div>
               </div>
             </div>
           </section>

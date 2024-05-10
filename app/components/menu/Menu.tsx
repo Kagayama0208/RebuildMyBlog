@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 
+import "./style.css";
+
 const Menu = ({
   categoryList,
 }: {
@@ -81,13 +83,17 @@ const Menu = ({
 
           <ul className="md:flex hidden flex-wrap flex-row">
             {formattedList.map((link, index) => (
-              <div className="menu-link-item p-5" key={index}>
+              <div className="menu-link-item p-5 " key={index}>
                 <div className="menu-link-item-holder">
                   <Link href={link.path}>{link.label}</Link>
                 </div>
               </div>
             ))}
-            <Link key="posts" href="/posts/1" className="p-5 ">
+            <Link
+              key="posts"
+              href="/posts/1"
+              className="p-5 menu-link-item last-link"
+            >
               記事一覧
             </Link>
           </ul>
@@ -107,7 +113,7 @@ const Menu = ({
           <Link
             key="posts"
             href="/posts/1"
-            className="p-5 menu-link"
+            className="p-5 menu-link "
             onClick={toggleFunction}
           >
             記事一覧
