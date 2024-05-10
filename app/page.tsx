@@ -53,7 +53,9 @@ export default async function Home() {
               <div className="border-r-2 border-gray-300 px-2">
                 <div>
                   <Image
-                    src={newPosts[0].eyecatch?.url}
+                    src={
+                      newPosts[0].eyecatch?.url ? newPosts[0].eyecatch?.url : ""
+                    }
                     width="1000"
                     height="667"
                     alt={newPosts[0].title}
@@ -66,7 +68,9 @@ export default async function Home() {
               <div id="small-card-wrapper">
                 <div className="mx-4 border-b-2 border-gray-300 h-1/2 mb-2">
                   <Image
-                    src={newPosts[1].eyecatch?.url}
+                    src={
+                      newPosts[1].eyecatch?.url ? newPosts[1].eyecatch?.url : ""
+                    }
                     width="500"
                     height="300"
                     alt={newPosts[1].title}
@@ -77,7 +81,9 @@ export default async function Home() {
                 </div>
                 <div className="mx-4 border-b-2 border-gray-300 h-1/2">
                   <Image
-                    src={newPosts[2].eyecatch?.url}
+                    src={
+                      newPosts[2].eyecatch?.url ? newPosts[2].eyecatch?.url : ""
+                    }
                     width="500"
                     height="300"
                     alt={newPosts[2].title}
