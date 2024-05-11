@@ -9,6 +9,7 @@ import ImageSlider from "./components/Slider/ImageSlider";
 import PostsSlider from "./components/Slider/PostsSlider";
 import AnimateSection from "./components/AnimationSection";
 import { getBlogs } from "./libs/getContents";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   description:
@@ -51,7 +52,7 @@ export default async function Home() {
           <section className=" w-11/12 flex justify-center mx-auto my-5 max-lg:hidden ">
             <div id="big-card" className="px-2 h-full flex">
               <div className="border-r-2 border-gray-300 px-2">
-                <div>
+                <Link href={`post/${newPosts[0].id}`}>
                   <Image
                     src={
                       newPosts[0].eyecatch?.url ? newPosts[0].eyecatch?.url : ""
@@ -60,12 +61,12 @@ export default async function Home() {
                     height="667"
                     alt={newPosts[0].title}
                   />
-                </div>
+                </Link>
                 <h1 className="text-3xl my-3">{newPosts[0].title}</h1>
                 <p>カテゴリー：{newPosts[0].category.name}</p>
                 <p>{newPosts[0].updatedAt}</p>
               </div>
-              <div id="small-card-wrapper">
+              <Link href={`post/${newPosts[1].id}`} id="small-card-wrapper">
                 <div className="mx-4 border-b-2 border-gray-300 h-1/2 mb-2">
                   <Image
                     src={
@@ -79,7 +80,10 @@ export default async function Home() {
                   <p>カテゴリー：{newPosts[1].category.name}</p>
                   <p>{newPosts[1].updatedAt}</p>
                 </div>
-                <div className="mx-4 border-b-2 border-gray-300 h-1/2">
+                <Link
+                  href={`post/${newPosts[2].id}`}
+                  className="mx-4 border-b-2 border-gray-300 h-1/2"
+                >
                   <Image
                     src={
                       newPosts[2].eyecatch?.url ? newPosts[2].eyecatch?.url : ""
@@ -91,8 +95,8 @@ export default async function Home() {
                   <h1 className="text-xl my-1">{newPosts[2].title}</h1>
                   <p>カテゴリー：{newPosts[2].category.name}</p>
                   <p>{newPosts[2].updatedAt}</p>
-                </div>
-              </div>
+                </Link>
+              </Link>
             </div>
           </section>
 
