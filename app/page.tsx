@@ -10,10 +10,11 @@ import PostsSlider from "./components/Slider/PostsSlider";
 import AnimateSection from "./components/AnimationSection";
 import { getBlogs } from "./libs/getContents";
 import Link from "next/link";
+import { formatDate } from "./components/fomatDate";
 
 export const metadata: Metadata = {
   description:
-    "This page is blog and portfolio web site using microCMS, Next.js. ",
+    "This page is blog and portfolio web site using microCMS, Next.js.",
 };
 
 const slideImages = [
@@ -33,6 +34,7 @@ const slideImages = [
 export default async function Home() {
   const newPostsList = await getBlogs({ limit: 5 });
   const newPosts = newPostsList.contents;
+
   return (
     <main className="block z-10">
       <AnimateSection />
@@ -64,7 +66,7 @@ export default async function Home() {
                 </Link>
                 <h1 className="text-3xl my-3">{newPosts[0].title}</h1>
                 <p>カテゴリー：{newPosts[0].category.name}</p>
-                <p>{newPosts[0].updatedAt}</p>
+                {formatDate(newPosts[0].createdAt)}
               </div>
               <Link href={`post/${newPosts[1].id}`} id="small-card-wrapper">
                 <div className="mx-4 border-b-2 border-gray-300 h-1/2 mb-2">
@@ -78,12 +80,9 @@ export default async function Home() {
                   />
                   <h1 className="text-xl my-1">{newPosts[1].title}</h1>
                   <p>カテゴリー：{newPosts[1].category.name}</p>
-                  <p>{newPosts[1].updatedAt}</p>
+                  {formatDate(newPosts[1].updatedAt)}
                 </div>
-                <Link
-                  href={`post/${newPosts[2].id}`}
-                  className="mx-4 border-b-2 border-gray-300 h-1/2"
-                >
+                <div>
                   <Image
                     src={
                       newPosts[2].eyecatch?.url ? newPosts[2].eyecatch?.url : ""
@@ -94,8 +93,8 @@ export default async function Home() {
                   />
                   <h1 className="text-xl my-1">{newPosts[2].title}</h1>
                   <p>カテゴリー：{newPosts[2].category.name}</p>
-                  <p>{newPosts[2].updatedAt}</p>
-                </Link>
+                  {formatDate(newPosts[2].updatedAt)}
+                </div>
               </Link>
             </div>
           </section>
@@ -118,7 +117,17 @@ export default async function Home() {
               <h2 className="text-xl mb-4">About me</h2>
               <div className=" w-14 h-[1px] bg-black my-2"></div>
               <p>
-                私は風景写真、ソーシャルゲームが好きなKagayamaです。日々の生活でADHDとASDと向き合いながら、薬を飲んで充実した日々を過ごしています。美しい風景を見ることが好きで、それを写真としてシェアすることが楽しみです。読者の皆さんと共感を共有できることを願っています。よろしくお願いします！
+                大学中退2回のニートです。工学部と法学部にそれぞれ2年いました。
+                <br></br>
+                現在は就活中です。
+                <br />
+                猫とゲーム、自然、写真が好きです。
+                <br />
+                私についてもっと詳しく書いてある
+                <Link className=" text-blue-600" href="/">
+                  ”知能検査と遺伝子検査をうけてきた”
+                </Link>
+                という記事もぜひ読んでいただけると幸いです。
               </p>
             </div>
           </div>

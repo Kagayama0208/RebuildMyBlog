@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://romi-travel.com
+Host: https://neetwisdom.com
 
 # Sitemaps
-Sitemap: https://romi-travel.com/sitemap.xml
+Sitemap: https://neetwisdom.com/sitemap.xml

@@ -1,7 +1,14 @@
+@font-face {
+  font-family: "logoFont";
+  src: url("E:\newBlog\microcms-blog\public\font\logoFont.woff2")
+    format("woff2");
+}
+
 .menu-link-item {
   font-weight: bold;
   border-left-width: 1px;
   border-color: gray;
+  color: white;
 }
 
 .last-link {
@@ -13,4 +20,8 @@
   transition: 1s;
   color: blue;
   opacity: 0.5;
+}
+
+.logo {
+  font-family: logoFont;
 }

@@ -14,7 +14,9 @@ export async function generateMetadata({
   params: { postId: string };
 }): Promise<Metadata> {
   const post = await getPostDetail(params.postId);
-  const metadataBase = new URL(`https://romi-travel.com/post/${params.postId}`);
+  const metadataBase = new URL(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/post/${params.postId}`
+  );
   return {
     title: post.title,
     description: post.content.slice(0, 50),

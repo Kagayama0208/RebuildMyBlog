@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 
 import "./style.css";
+import Image from "next/image";
 
 const Menu = ({
   categoryList,
@@ -66,12 +67,18 @@ const Menu = ({
   });
 
   return (
-    <nav className="nav w-screen h-full z-50">
+    <nav className="nav w-full h-full z-50">
       <div className="wrapper h-full relative mx-auto" ref={container}>
-        <div className="top-menu flex h-full w-full max-w-6xl justify-between text-center items-center mx-auto ">
+        {/* 768px以上 */}
+        <div className="top-menu flex h-full w-full max-w-6xl justify-between text-center items-center mx-auto px-5">
           <div>
-            <Link href="/" className=" text-xl px-4 md:text-3xl">
-              RoMi
+            <Link href="/" className=" text-xl px-4 md:text-3xl logo">
+              <Image
+                src="/images/logo/blogLogo.png"
+                alt="mainPage"
+                width={100}
+                height={50}
+              />
             </Link>
           </div>
 
@@ -98,8 +105,8 @@ const Menu = ({
             </Link>
           </ul>
         </div>
-
-        <ul className="ham-menu hidden opacity-0 absolute w-full z-50 flex-wrap flex-col justify-center text-center items-center  bg-gray-700 text-gray-400">
+        {/* 768px未満 */}
+        <ul className="ham-menu hidden opacity-0 absolute w-full z-50 flex-wrap flex-col justify-center text-center items-center  bg-gray-700 text-gray-200">
           {formattedList.map((link, index) => (
             <Link
               href={link.path}

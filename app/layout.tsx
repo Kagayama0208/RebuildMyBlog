@@ -10,26 +10,26 @@ const TiltNeon = Tilt_Neon({ subsets: ["latin"], variable: "--font-TiltNeon" });
 
 export const metadata: Metadata = {
   title: {
-    default: "RoMi Blog",
-    template: "%s - RoMi Blog",
+    default: "にーとの知恵袋",
+    template: "%s - にーとの知恵袋",
   },
   description:
-    "RoMiは写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
+    "にーとの知恵袋は写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
   openGraph: {
-    title: "RoMi Blog",
+    title: "にーとの知恵袋",
     description:
-      "RoMiは写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
+      "にーとの知恵袋は写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
     locale: "ja_JP",
-    siteName: "RoMi Blog",
-    url: "https://romi-travel.com/",
+    siteName: "にーとの知恵袋",
+    url: "https://neetwisdom.com/",
     type: "website",
   },
-  keywords: "ブログ, ガジェット, 技術, 写真, カメラ, 発達障害, ADHD, ASD",
+  keywords: "ブログ, ゲーム, ガジェット, 技術, 写真, カメラ, ADHD, ASD",
   twitter: {
     card: "summary_large_image",
-    title: "RoMi Blog",
+    title: "にーとの知恵袋",
     description:
-      "RoMiは写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
+      "にーとの知恵袋は写真、ゲーム、ガジェットについてのブログです。最新のトピックや興味深い記事をお届けします。",
     site: "@kagayama_kk",
     creator: "@kagayama_kk",
   },
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         {/* <!-- Google tag (gtag.js) --> */}
         <Script
@@ -58,9 +58,9 @@ export default function RootLayout({
         ></Script>
         <Script id="google-analytics">
           {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-H6EK669P4K');`}
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', 'G-H6EK669P4K');`}
         </Script>
       </head>
 
