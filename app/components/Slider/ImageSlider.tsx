@@ -23,20 +23,17 @@ const ImageSlider = ({
         loop={true}
       >
         {slideImages.map((d, index) => (
-          <>
-            <SwiperSlide key={index} className=" w-lvw">
-              <div className="flex h-full w-full items-center justify-center">
-                <Image
-                  width="1280"
-                  height="800"
-                  src={d.src}
-                  alt={d.alt}
-                  key={d.alt}
-                  className="block h-full w-full object-cover"
-                />
-              </div>
-            </SwiperSlide>
-          </>
+          <SwiperSlide key={index} className=" w-lvw">
+            <div className="flex h-full w-full items-center justify-center">
+              <Image
+                width="1280"
+                height="800"
+                src={d.src}
+                alt={d.alt}
+                className="block h-full w-full object-cover"
+              />
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

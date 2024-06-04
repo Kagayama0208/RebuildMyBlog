@@ -1,9 +1,3 @@
-@font-face {
-  font-family: "logoFont";
-  src: url("E:\newBlog\microcms-blog\public\font\logoFont.woff2")
-    format("woff2");
-}
-
 .menu-link-item {
   font-weight: bold;
   border-left-width: 1px;
