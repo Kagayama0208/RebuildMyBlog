@@ -44,7 +44,7 @@ const CategoryPage = ({
     return () => observer.disconnect();
   }, [postsRef]);
   return (
-    <div>
+    <div className="text-black">
       <h1 className="text-3xl text-center py-5">記事一覧</h1>
       <h2 className="text-xl text-center py-5">
         カテゴリー：{postsData.contents[0].category.name}

@@ -38,13 +38,12 @@ export default async function Home() {
   return (
     <main className="block z-10">
       <AnimateSection />
+      <h1 className="text-4xl text-gray-800 text-center">最新記事</h1>
       <div>
-        <div className="w-full">
+        <div className="w-full text-gray-800">
           {/* tablet & smart phone */}
           <section id="newPosts" className=" hidden my-3 max-lg:block">
             <div className="smooth-content w-full flex items-center justify-center flex-col">
-              <h1 className="text-4xl">新着記事</h1>
-
               <div className="flex  items-center justify-center mx-auto px-10 w-full">
                 <PostsSlider postsList={newPosts} />
               </div>
@@ -52,8 +51,8 @@ export default async function Home() {
           </section>
           {/* PC */}
           <section className=" w-11/12 flex justify-center mx-auto my-5 max-lg:hidden ">
-            <div id="big-card" className="px-2 h-full flex">
-              <div className="border-r-2 border-gray-300 px-2">
+            <div id="big-card" className="px-2 h-full flex ">
+              <div className="border-r-2 border-gray-300 px-2 w-3/4">
                 <Link href={`post/${newPosts[0].id}`}>
                   <Image
                     src={
@@ -64,7 +63,9 @@ export default async function Home() {
                     alt={newPosts[0].title}
                   />
                 </Link>
-                <h1 className="text-3xl my-3">{newPosts[0].title}</h1>
+                <h1 className="text-3xl my-3 text-gray-900">
+                  {newPosts[0].title}
+                </h1>
                 <p>カテゴリー：{newPosts[0].category.name}</p>
                 {formatDate(newPosts[0].createdAt)}
               </div>
@@ -78,7 +79,9 @@ export default async function Home() {
                     height="300"
                     alt={newPosts[1].title}
                   />
-                  <h1 className="text-xl my-1">{newPosts[1].title}</h1>
+                  <h1 className="text-xl my-1 text-gray-900">
+                    {newPosts[1].title}
+                  </h1>
                   <p>カテゴリー：{newPosts[1].category.name}</p>
                   {formatDate(newPosts[1].updatedAt)}
                 </div>
@@ -91,7 +94,9 @@ export default async function Home() {
                     height="300"
                     alt={newPosts[2].title}
                   />
-                  <h1 className="text-xl my-1">{newPosts[2].title}</h1>
+                  <h1 className="text-xl my-1 p-4 text-gray-900">
+                    {newPosts[2].title}
+                  </h1>
                   <p>カテゴリー：{newPosts[2].category.name}</p>
                   {formatDate(newPosts[2].updatedAt)}
                 </div>
@@ -114,24 +119,20 @@ export default async function Home() {
               />
             </div>
             <div className=" md:w-1/2 mx-3 my-6 w-8/12 ">
-              <h2 className="text-xl mb-4">About me</h2>
+              <h2 className="text-xl mb-4 text-gray-800">About me</h2>
               <div className=" w-14 h-[1px] bg-black my-2"></div>
               <p>
-                大学中退2回のニートです。工学部と法学部にそれぞれ2年いました。
+                大学中退したものです。工学部にいました。
                 <br></br>
                 現在は就活中です。
                 <br />
                 猫とゲーム、自然、写真が好きです。
                 <br />
-                私についてもっと詳しく書いてある
-                <Link className=" text-blue-600" href="/">
-                  ”知能検査と遺伝子検査をうけてきた”
-                </Link>
-                という記事もぜひ読んでいただけると幸いです。
+                このブログについて詳しく書いた記事をぜひお読みください。
               </p>
             </div>
           </div>
-          <h1 className=" font-bold text-3xl justify-center text-center my-2">
+          <h1 className=" font-bold text-3xl justify-center text-center my- text-gray-800">
             Photo Gallery
           </h1>
           <ImageSlider slideImages={slideImages} />

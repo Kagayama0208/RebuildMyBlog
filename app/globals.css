@@ -38,6 +38,7 @@ body::-webkit-scrollbar {
 
 * {
   scroll-behavior: smooth;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .header {

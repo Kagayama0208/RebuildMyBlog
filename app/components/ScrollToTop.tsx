@@ -1,6 +1,6 @@
 "use client";
 
-import { BiSolidToTop } from "react-icons/bi";
+import { BiColor, BiSolidToTop } from "react-icons/bi";
 
 const ScrollToTop: React.FC = () => {
   const scroll = (): void => {
@@ -15,7 +15,7 @@ const ScrollToTop: React.FC = () => {
       <button onClick={scroll}>
         <div className="flex justify-center text-center flex-col">
           <BiSolidToTop className="text-4xl mx-auto" />
-          <p className="text-xl">BACK TO TOP</p>
+          <p className="text-xl text-white">BACK TO TOP</p>
         </div>
       </button>
     </div>

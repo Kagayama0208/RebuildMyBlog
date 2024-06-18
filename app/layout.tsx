@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Tilt_Neon } from "next/font/google";
-import "./globals.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import "./globals.css";
 
 const TiltNeon = Tilt_Neon({ subsets: ["latin"], variable: "--font-TiltNeon" });
 
