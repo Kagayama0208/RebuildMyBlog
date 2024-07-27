@@ -50,7 +50,9 @@ const PostsSlider = ({
   const posts = postsList;
 
   if (!postsList) {
-    <div>新着記事は現在ありません</div>;
+    <div className="text-gray-800 dark:text-gray-100">
+      新着記事は現在ありません
+    </div>;
   } else {
     return (
       <div className="p-2 my-4 w-full max-w-4xl h-[400]">
@@ -84,7 +86,7 @@ const PostsSlider = ({
               .padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
             return (
               <SwiperSlide key={content.id}>
-                <div className=" md:w-[300] md:h-[450] bg-slate-300">
+                <div className=" md:w-[300] md:h-[450] bg-slate-300 dark:bg-slate-800">
                   <Link href={`/post/${content.id}`} className="flex flex-col">
                     <div className="w-full h-1/2 eyecatch-image">
                       <Image
@@ -99,29 +101,38 @@ const PostsSlider = ({
                       />
                     </div>
 
-                    <div className="w-full p-5 text-com h-1/2">
-                      <h2 className=" font-bold text-xl py-2 ">
+                    <div className="w-full p-5 text-com h-1/2 ">
+                      <h2 className=" font-bold text-xl py-2 text-gray-800 dark:text-gray-100">
                         {content.title}
                       </h2>
-                      <div className="flex">
-                        <p>カテゴリ：</p>
-                        {content.category && <p>{content.category.name}</p>}
+                      <div className="flex  text-gray-800 dark:text-gray-100">
+                        <p className=" text-gray-800 dark:text-gray-100">
+                          カテゴリ：
+                        </p>
+                        {content.category && (
+                          <p className=" text-gray-800 dark:text-gray-100">
+                            {content.category.name}
+                          </p>
+                        )}
                       </div>
-                      <div className="flex">
-                        <p className="flex items-center justify-center">
+                      <div className="flex ">
+                        <p className="flex items-center justify-center  text-gray-800 dark:text-gray-100">
                           <CiShoppingTag />:
                         </p>
                         {content.tag &&
                           content.tag.map((t) => {
                             return (
-                              <p key={t.id} className="pr-2">
+                              <p
+                                key={t.id}
+                                className="pr-2  text-gray-800 dark:text-gray-100"
+                              >
                                 {t.name}
                               </p>
                             );
                           })}
                       </div>
                       <div>
-                        <p className="flex items-center">
+                        <p className="flex items-center  text-gray-800 dark:text-gray-100">
                           <CiCalendarDate />:{formattedDate}
                         </p>
                       </div>

@@ -50,7 +50,7 @@ export default async function blogPage({
 
   return (
     <div className="flex flex-wrap items-center justify-center my-4">
-      <div className=" text-center w-11/12  bg-white rounded-lg px-3 py-4">
+      <div className=" text-center w-11/12 rounded-lg px-3 py-4">
         <h1 className=" text-2xl">{post.title}</h1>
         <div className="flex flex-wrap items-center justify-center">
           <p className=" rounded-md bg-green-200 w-52 ">

@@ -8,5 +8,5 @@ export const formatDate = (createdDate: string) => {
     .toString()
     .padStart(2, "0")}`;
 
-  return <p>{formattedDate}</p>;
+  return <p className="text-gray-800 dark:text-gray-100 ">{formattedDate}</p>;
 };

@@ -68,7 +68,7 @@ export default function RootLayout({
 
       <body className={`${TiltNeon.variable} `}>
         <Header />
-        <div className="h-full">{children}</div>
+        <div className="h-full py-5">{children}</div>
 
         <Footer />
         <SpeedInsights />

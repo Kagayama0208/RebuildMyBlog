@@ -46,7 +46,7 @@ const ArticleCard = ({
   return (
     <div
       id="post"
-      className="post md:h-[250px] mx-auto my-2 w-full bg-white rounded-xl overflow-hidden  md:w-[650]  flex justify-center"
+      className="post md:h-[250px] mx-auto my-2 w-full bg-white dark:bg-slate-500 rounded-xl overflow-hidden  md:w-[650]  flex justify-center"
     >
       <Link href={`/post/${id}`} className="flex flex-col  md:flex-row w-full">
         <div className="w-full md:w-1/2 eyecatch-image  overflow-hidden">

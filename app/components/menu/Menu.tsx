@@ -21,6 +21,7 @@ const Menu = ({
     console.log(isMenuOpen);
 
     if (!isMenuOpen) {
+      // open
       const menuElement = document.querySelector(".ham-menu");
       const menuLink = document.querySelectorAll(".menu-link");
       gsap.to(menuElement, {
@@ -35,12 +36,13 @@ const Menu = ({
           duration: 1,
           delay: 0.5,
           opacity: 1,
-          y: 20,
+          y: 5,
           stagger: 0.1,
           ease: "expo.inOut",
         });
       });
     } else {
+      // close
       const menuElement = document.querySelector(".ham-menu");
       const menuLink = document.querySelectorAll(".menu-link");
       gsap.to(menuElement, {
@@ -54,7 +56,7 @@ const Menu = ({
         gsap.to(e, {
           duration: 1,
           opacity: 0,
-          y: 0,
+          y: -5,
           stagger: 0.1,
           ease: "expo.inOut",
         });
