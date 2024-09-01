@@ -39,7 +39,7 @@ export default async function Home() {
     <main className="block z-10 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark ">
       <div className="w-5/6 mx-auto">
         <AnimateSection />
-        <div className="mx-auto">
+        <div className="mx-auto text-text-light dark:text-text-dark">
           <h2>お知らせ</h2>
           <p className="text-lg">
             記事ページの方、ライトモードでは現在読めない状態です。ダークモードでお読みください
