@@ -49,21 +49,27 @@ export default async function blogPage({
   }));
 
   return (
-    <div className="flex flex-wrap items-center justify-center my-4">
+    <div className="flex flex-wrap items-center justify-center py-4 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark">
       <div className=" text-center w-11/12 rounded-lg px-3 py-4">
         <h1 className=" text-2xl">{post.title}</h1>
         <div className="flex flex-wrap items-center justify-center">
-          <p className=" rounded-md bg-green-200 w-52 ">
+          <p className=" rounded-md bg-green-200 w-52 text-text-light">
             カテゴリー:{post.category.name}
           </p>
         </div>
 
-        <div className="m-4 py-5 px-9 bg-slate-400 w-60 mx-auto rounded-lg text-gray-100">
+        <div className="m-4 py-5 px-9  w-60 mx-auto rounded-lg  text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark shadow-md">
           <section id="table-contents">
-            <h2 className="text-2xl">目次</h2>
+            <h2 className="text-2xl text-text-light dark:text-text-dark">
+              目次
+            </h2>
             <ul id="lists" className="text-lg">
               {toc.map((toc, index) => (
-                <li id={toc.name} key={index} className="gap-2 text-left">
+                <li
+                  id={toc.name}
+                  key={index}
+                  className="gap-2 text-left text-subtext-light dark:text-subtext-dark hover:text-primary-light dark:hover:text-primary-dark"
+                >
                   <a href={`#${toc.id}`}>{toc.text}</a>
                 </li>
               ))}
@@ -71,7 +77,7 @@ export default async function blogPage({
           </section>
         </div>
 
-        <div className="text-left w-3/4 mx-auto">
+        <div className="text-left w-3/4 mx-auto text-text-light dark:text-text-dark">
           {parse(post.content, {
             replace: (domNode) => {
               const typeDomNode = domNode as Element;

@@ -92,17 +92,19 @@ const TagFilter = ({
   }, [postRef]);
 
   return (
-    <div className=" w-4/5">
+    <div className="w-4/5 text-text-light dark:text-text-dark">
       <div>
-        <div className="searchbutton-area">
-          <div className="searchbutton__tags">
+        <div className="searchbutton-area mb-6">
+          <div className="searchbutton__tags flex flex-wrap justify-center">
             {allTags.map((tag) => {
               return (
                 <button
                   data-tag={tag}
                   onClick={tagClick}
-                  className={`searchbutton__tag px-2 py-1 mx-1 my-1 rounded-full ${
-                    activeTags.includes(tag) ? "active bg-lime-600" : ""
+                  className={`searchbutton__tag px-3 py-1 m-1 rounded-full border border-primary-light dark:border-primary-dark transition-colors duration-200 ${
+                    activeTags.includes(tag)
+                      ? "active bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark"
+                      : "bg-surface-light dark:bg-surface-dark hover:bg-primary-light hover:dark:bg-primary-dark"
                   }`}
                   key={tag}
                 >
@@ -113,8 +115,10 @@ const TagFilter = ({
           </div>
           <button
             onClick={tagClick}
-            className={`searchbutton__tag px-2 py-1 mx-1 my-1 rounded-full ${
-              activeTags.includes("all") ? "active bg-lime-600" : ""
+            className={`searchbutton__tag px-3 py-1 m-1 rounded-full border border-primary-light dark:border-primary-dark transition-colors duration-200 ${
+              activeTags.includes("all")
+                ? "active bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark"
+                : "bg-surface-light dark:bg-surface-dark hover:bg-primary-light hover:dark:bg-primary-dark"
             }`}
             key="allPosts"
             data-tag="all"
@@ -123,7 +127,7 @@ const TagFilter = ({
           </button>
         </div>
         <ul
-          className="js-show-on-scroll flex flex-wrap flex-col justify-center items-center gap-2 w-full"
+          className="js-show-on-scroll flex flex-wrap flex-col justify-center items-center gap-4 w-full"
           ref={postRef}
         >
           {displayItems.map((blog, index) => {
@@ -148,7 +152,7 @@ const TagFilter = ({
             }
           })}
         </ul>
-        <div>
+        <div className="mt-8">
           <Pagination totalCount={totalCount} currentPage={id} />
         </div>
       </div>

@@ -8,6 +8,7 @@ import gsap from "gsap";
 
 import "./style.css";
 import Image from "next/image";
+import DarkModeToggle from "../DarkModeToggle";
 
 const Menu = ({
   categoryList,
@@ -69,12 +70,12 @@ const Menu = ({
   });
 
   return (
-    <nav className="nav w-full h-full z-50">
-      <div className="wrapper h-full relative mx-auto" ref={container}>
+    <nav className="nav w-full h-full z-50 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark">
+      <div className="wrapper w-5/6 relative mx-auto" ref={container}>
         {/* 768px以上 */}
-        <div className="top-menu flex h-full w-full max-w-6xl justify-between text-center items-center mx-auto px-5">
-          <div>
-            <Link href="/" className=" text-xl px-4 md:text-3xl logo">
+        <div className="top-menu flex h-full w-full max-w-6xl justify-between text-center items-center mx-auto">
+          <div className="bg-gray-800 rounded-lg">
+            <Link href="/" className="text-xl px-4 md:text-3xl logo ">
               <Image
                 src="/images/logo/blogLogo.png"
                 alt="mainPage"
@@ -92,8 +93,11 @@ const Menu = ({
 
           <ul className="md:flex hidden flex-wrap flex-row">
             {formattedList.map((link, index) => (
-              <div className="menu-link-item p-5 " key={index}>
-                <div className="menu-link-item-holder">
+              <div
+                className="menu-link-item p-5 hover:bg-primary-light dark:hover:bg-primary-dark  rounded-lg"
+                key={index}
+              >
+                <div className="menu-link-item-holder text-text-light dark:text-text-dark">
                   <Link href={link.path}>{link.label}</Link>
                 </div>
               </div>
@@ -101,18 +105,21 @@ const Menu = ({
             <Link
               key="posts"
               href="/posts/1"
-              className="p-5 menu-link-item last-link"
+              className="p-5 menu-link-item last-link text-text-light dark:text-text-dark hover:bg-primary-light dark:hover:bg-primary-dark rounded-lg"
             >
               記事一覧
             </Link>
+            <div className="p-5">
+              <DarkModeToggle />
+            </div>
           </ul>
         </div>
         {/* 768px未満 */}
-        <ul className="ham-menu hidden opacity-0 absolute w-full z-50 flex-wrap flex-col justify-center text-center items-center  bg-gray-700 text-gray-200">
+        <ul className="ham-menu hidden opacity-0 absolute w-full z-50 flex-wrap flex-col justify-center text-center items-center bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark">
           {formattedList.map((link, index) => (
             <Link
               href={link.path}
-              className="menu-link p-5"
+              className="menu-link p-5 w-full hover:bg-primary-light dark:hover:bg-primary-dark text-text-light dark:text-text-dark"
               onClick={toggleFunction}
               key={index}
             >
@@ -122,25 +129,18 @@ const Menu = ({
           <Link
             key="posts"
             href="/posts/1"
-            className="p-5 menu-link "
+            className="p-5 menu-link w-full hover:bg-primary-light dark:hover:bg-primary-dark text-text-light dark:text-text-dark"
             onClick={toggleFunction}
           >
             記事一覧
           </Link>
+          <div className="p-5">
+            <DarkModeToggle />
+          </div>
         </ul>
       </div>
     </nav>
   );
 };
-
-// {formattedList.map((link, index) => (
-//   <div className="menu-link-item" key={index}>
-//     <div className="menu-link-item-holder">
-//       <Link href={link.path} className="menu-link">
-//         {link.label}
-//       </Link>
-//     </div>
-//   </div>
-// ))}
 
 export default Menu;
