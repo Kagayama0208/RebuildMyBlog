@@ -40,8 +40,8 @@ export default async function Home() {
       <div className="w-5/6 mx-auto">
         <AnimateSection />
         <div className="mx-auto text-text-light dark:text-text-dark">
-          <h2>お知らせ</h2>
-          <p className="text-lg">
+          <h2 className="text-text-light dark:text-text-dark">お知らせ</h2>
+          <p className="text-lg text-text-light dark:text-text-dark">
             記事ページの方、ライトモードでは現在読めない状態です。ダークモードでお読みください
           </p>
         </div>
