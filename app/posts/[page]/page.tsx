@@ -25,9 +25,11 @@ export default async function BlogsPage({
   const allPostsData = await getBlogs();
 
   return (
-    <div>
-      <div className="h-full">
-        <h1 className="text-3xl text-center py-5">記事一覧</h1>
+    <div className="bg-background-light dark:bg-background-dark min-h-screen">
+      <div className="h-full container mx-auto px-4">
+        <h1 className="text-3xl text-center py-5 text-text-light dark:text-text-dark font-bold">
+          記事一覧
+        </h1>
         <div className="flex flex-wrap text-center justify-center">
           <TagFilter
             allTags={allTagsName}

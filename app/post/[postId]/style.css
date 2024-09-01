@@ -1,21 +1,41 @@
+:root {
+  --text-color: rgb(51 51 51);
+  --bg-color: rgb(255 255 255);
+  --heading-bg-color: rgb(71 85 105);
+  --tw-text-opacity: 1;
+  --tw-bg-opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: rgb(229 231 235);
+    --bg-color: rgb(17 24 39);
+    --heading-bg-color: rgb(55 65 81);
+  }
+}
+
 * {
   scroll-behavior: smooth;
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--bg-color);
 }
 
 h1 {
   font-size: 3rem;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-  color: white;
+  background-color: var(--heading-bg-color);
+  color: var(--bg-color);
   padding: 1.4rem;
   border-radius: 1rem;
 }
 
 h2 {
   font-size: 2.5rem;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-  color: white;
   padding: 1rem;
   border-radius: 1rem;
+  border: 2px solid var(--heading-bg-color);
 }
 
 h3 {

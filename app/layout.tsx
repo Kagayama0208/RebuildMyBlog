@@ -7,6 +7,8 @@ import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
+import DarkModeToggle from "./components/DarkModeToggle";
 
 const TiltNeon = Tilt_Neon({ subsets: ["latin"], variable: "--font-TiltNeon" });
 
@@ -50,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
         {/* <!-- Google tag (gtag.js) --> */}
         <Script
@@ -64,13 +66,33 @@ export default function RootLayout({
            gtag('js', new Date());
            gtag('config', 'G-H6EK669P4K');`}
         </Script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              function getThemePreference() {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                  return localStorage.getItem('theme');
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+              }
+              document.documentElement.classList.add(getThemePreference());
+            })();
+          `,
+          }}
+        />
       </head>
 
       <body className={`${TiltNeon.variable} `}>
-        <Header />
-        <div className="h-full py-5">{children}</div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
 
-        <Footer />
+          <div className="h-full py-5 bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+            {children}
+          </div>
+
+          <Footer />
+        </ThemeProvider>
         <SpeedInsights />
       </body>
     </html>
